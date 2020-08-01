@@ -9,7 +9,15 @@ def index(request):
     })
 
 
-
+def title(request,title):
+        content = util.get_entry(title)
+        if content:
+            return render(request,"encyclopedia/content.html",{
+                "content": md.markdown(content),
+                "title": title
+        })
+        else: 
+            return render(request,"encyclopedia/error.html")
 
 
 
